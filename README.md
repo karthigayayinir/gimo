@@ -2,13 +2,35 @@
 
 # GIMO Books
 
-## Assumptions & Brief about the solution
+## Thought process
 
-- Only books table with few fields as stated
-- There will be search functionality on backend & front end
-- Front end needs to have text search and filters, so preferred a data table component
-- Pagination has been implemented on the Frontend. It is open for extending it to backend based as well
-- Dockerized to simplify the deployment
+### *REST API*
+
+**User needs and requirements:** API should search the database on the author & title columns. So decided to keep a GET api endpoint which takes a search string as query param.
+
+**Data sources:** As per suggestion took the data using the openlibrary api & decided to keep a simple table with the columns title(varchar), author(varchar), description(text), publication_year(int). Considering the timeline to complete the assignment and my expertise, i chose to go with MariaDB.
+
+**Search criteria:** The API could allow users to search by author, title. Query does a wild card search on both the columns and sort the result by created_at column.
+
+**Response format:** Response format has been decided to be JSON.
+
+**Security:** I have decided to go with Laravel framework based on my experience. The ORM takes care of data validation and sanitization to prevent SQL injection and other types of attacks.
+
+### *REACT JS*
+
+**User Interface Design:** The requirement wasn't focusing much on the UI design, still decided to go with bootstrap to come up with a decent look and feel. Chose to use `https://react-data-table-component.netlify.app/` data table component to leverage its out of the box sorting, pagination and hook facility customize the data.
+
+**Search Functionality:** Client side rendering application, expected to list the book details, full text search based on title, author, description and filter based on publication year & author.
+
+**Data Management:** The app will store the data from API at redux and all the search & filtered responses will go into local state.
+
+**State Management:** Redux has been selected as the state management library based of its wide range of usage.
+
+**Accessibility:** Bootstrap comes in handy with this aspect.
+
+**Performance:** Finally, the performance of the app is also critical. The app should be designed to load quickly and respond to user actions in a timely manner. This involves optimizing the app's performance through techniques such as code splitting, lazy loading, and memoization.
+
+**Dockerized the application to simplify the deployment.**
 
 ## Prerequisite
 
